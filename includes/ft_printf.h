@@ -6,7 +6,7 @@
 /*   By: Math <Math@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/09 14:47:47 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/10/18 17:38:55 by Math             ###   ########.fr       */
+/*   Updated: 2020/11/22 12:32:05 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,7 @@ int			ft_size_nb(long int nbr);
 int			ft_size_hexa(long int nb);
 t_format	*ft_init_format();
 void		ft_putnbr(long int nb, t_format *format_parsed);
-void	ft_putstr_prec(char *str, t_format *format_parsed);
+void		ft_putstr_prec(char *str, t_format *format_parsed);
+void		ft_display_float(t_format *format_parsed, va_list arg);
+char			*ft_llitoa(long long nb);
 #endif

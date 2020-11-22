@@ -6,13 +6,13 @@
 #    By: mlebrun <mlebrun@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/17 19:40:00 by mlebrun           #+#    #+#              #
-#    Updated: 2020/11/22 06:03:58 by mlebrun          ###   ########.fr        #
+#    Updated: 2020/11/22 12:31:05 by mlebrun          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = srcs/ft_printf.c srcs/display.c srcs/print_integer.c \
-srcs/size.c srcs/print_no_integer.c srcs/precision.c srcs/parse.c
-
+SRCS = ft_printf.c display.c print_integer.c \
+size.c print_no_integer.c precision.c parse.c display_float.c \
+ft_llitoa.c
 OBJS = ${SRCS:.c=.o}
 
 CC = cc
