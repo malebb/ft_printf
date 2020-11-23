@@ -6,12 +6,25 @@
 /*   By: Math <Math@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/09 11:30:34 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/11/22 09:05:58 by mlebrun          ###   ########.fr       */
+/*   Updated: 2020/11/23 09:49:43 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
+
+int		ft_size_llnb(unsigned long long int nb)
+{
+	int			size;
+
+	size = 1;
+	while (nb >= 10)
+	{
+		nb /= 10;
+		size++;
+	}
+	return (size);
+}
 
 int		ft_size_hexa(long int nb)
 {

@@ -6,7 +6,7 @@
 /*   By: mlebrun <mlebrun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 06:44:24 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/11/22 12:10:01 by mlebrun          ###   ########.fr       */
+/*   Updated: 2020/11/23 17:14:01 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,12 @@
 
 int		main(void)
 {
-	float		nb;
+	double			nb;
 
-	nb = 192.5555555555555;
-	ft_printf("%f", nb);
-	printf("%.1000f", nb);
+	nb = 299999787887789.999399990945678;
+	printf("%.20f\n", nb);
+	fflush(stdout);
+	ft_printf("my=%15.1f\n", nb);
+	printf("th=%15.1f\n", nb);
 	return (0);
 }
