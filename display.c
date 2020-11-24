@@ -6,7 +6,7 @@
 /*   By: Math <Math@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/09 11:30:34 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/10/18 17:04:33 by Math             ###   ########.fr       */
+/*   Updated: 2020/11/24 08:21:56 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_putnbr(long int nb, t_format *format_parsed)
 void	ft_putchar(char c, t_format *format_parsed)
 {
 	write(1, &c, 1);
-	format_parsed->c_read++;
+	format_parsed->c_read = format_parsed->c_read + 1;
 }
 
 void	ft_putstr(char *str, t_format *format_parsed)

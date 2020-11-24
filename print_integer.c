@@ -6,7 +6,7 @@
 /*   By: Math <Math@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/09 11:30:34 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/10/19 14:26:24 by Math             ###   ########.fr       */
+/*   Updated: 2020/11/24 15:32:57 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,35 +51,75 @@ void	ft_display_int(t_format *format_parsed, long int nb, int size_nb)
 		i = -1;
 		if (format_parsed->zero_flag == 0)
 		{
-			while (++i < format_parsed->width
-				- (size_nb + format_parsed->negative))
+			while (++i < format_parsed->width - (size_nb + format_parsed->negative + format_parsed->plus_flag + format_parsed->space_flag + format_parsed->hashtag_flag))
 				ft_putchar(' ', format_parsed);
+			if (format_parsed->plus_flag)
+				ft_putchar('+', format_parsed);
+			if (format_parsed->space_flag == 1)
+				ft_putchar(' ', format_parsed);
+
+		if (format_parsed->hashtag_flag == 2 && format_parsed->type == 'x' && nb != 0)
+			ft_putstr("0x", format_parsed);
+		if (format_parsed->hashtag_flag == 2 && format_parsed->type == 'X' && nb != 0)
+			ft_putstr("0X", format_parsed);
+
 			ft_putnbr_dec_or_hexa(format_parsed, nb, size_nb);
 		}
 		else
 		{
+			if (format_parsed->plus_flag)
+				ft_putchar('+', format_parsed);
+			if (format_parsed->space_flag == 1)
+				ft_putchar(' ', format_parsed);
 			nbr = ft_check_minus_int(nb, format_parsed);
+
+		if (format_parsed->hashtag_flag == 2 && format_parsed->type == 'x' && nbr != 0)
+			ft_putstr("0x", format_parsed);
+		if (format_parsed->hashtag_flag == 2 && format_parsed->type == 'X' && nbr != 0)
+			ft_putstr("0X", format_parsed);
+
 			while (++i < format_parsed->width
-			- (size_nb + format_parsed->negative))
+			- (size_nb + format_parsed->negative + format_parsed->plus_flag + format_parsed->space_flag + format_parsed->hashtag_flag))
 				ft_putchar('0', format_parsed);
 			ft_putnbr_dec_or_hexa(format_parsed, nbr, size_nb);
 		}
 	}
 	else
+	{
+		if (format_parsed->plus_flag)
+			ft_putchar('+', format_parsed);
+		if (format_parsed->space_flag == 1)
+			ft_putchar(' ', format_parsed);
+
+		if (format_parsed->hashtag_flag == 2 && format_parsed->type == 'x' && nb != 0)
+			ft_putstr("0x", format_parsed);
+		if (format_parsed->hashtag_flag == 2 && format_parsed->type == 'X' && nb != 0)
+			ft_putstr("0X", format_parsed);
+
 		ft_putnbr_dec_or_hexa(format_parsed, nb, size_nb);
+	}
 }
 
 void	ft_display_int_minus_flag(t_format *format_parsed,
 		long int nb, int size_nb)
 {
 	int		i;
+
+	if (format_parsed->plus_flag)
+		ft_putchar('+', format_parsed);
+	if (format_parsed->space_flag == 1)
+		ft_putchar(' ', format_parsed);
+	if (format_parsed->hashtag_flag == 2 && format_parsed->type == 'x' && nb != 0)
+		ft_putstr("0x", format_parsed);
+	if (format_parsed->hashtag_flag == 2 && format_parsed->type == 'X' && nb != 0)
+		ft_putstr("0X", format_parsed);
 	if (format_parsed->prec != -1)
 		ft_prec_minus(format_parsed, nb, size_nb);
 	else if (format_parsed->width != 0)
 	{
 		i = 0;
 		ft_putnbr_dec_or_hexa(format_parsed, nb, size_nb);
-		while (i < format_parsed->width - (size_nb + format_parsed->negative))
+		while (i < format_parsed->width - (size_nb + format_parsed->negative + format_parsed->plus_flag + format_parsed->space_flag + format_parsed->hashtag_flag))
 		{
 			ft_putchar(' ', format_parsed);
 			i++;
@@ -100,13 +140,19 @@ void	ft_display_integer(t_format *format_parsed, va_list arg)
 		nb = (long int)va_arg(arg, unsigned int);
 	else
 		nb = 0;
-	
+	if (nb < 0)
+	{
+		format_parsed->negative = 1;
+		format_parsed->plus_flag = 0;
+	}
+	if (nb < 0 || format_parsed->plus_flag == 1)
+		format_parsed->space_flag = 0;
+	if (nb == 0)
+		format_parsed->hashtag_flag = 0;
 	size_nb = ft_size_hexa_dec(format_parsed, nb);
 	if (nb == 0 && format_parsed->prec == 0)
-				size_nb = 0;
-	if (nb < 0)
-		format_parsed->negative = 1;
-	if (format_parsed->minus_flag == 1)
+		size_nb = 0;
+	if (format_parsed->minus_flag)
 		ft_display_int_minus_flag(format_parsed, nb, size_nb);
 	else
 		ft_display_int(format_parsed, nb, size_nb);

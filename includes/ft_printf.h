@@ -6,7 +6,7 @@
 /*   By: Math <Math@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/09 14:47:47 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/11/23 09:50:07 by mlebrun          ###   ########.fr       */
+/*   Updated: 2020/11/24 07:34:06 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ typedef struct		s_format
 {
 	int			zero_flag;
 	int			minus_flag;
+	int			plus_flag;
+	int			space_flag;
+	int			hashtag_flag;
 	int			width;
 	int			prec;
 	char		type;

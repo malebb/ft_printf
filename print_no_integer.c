@@ -6,38 +6,12 @@
 /*   By: Math <Math@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/09 11:30:34 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/10/19 15:23:10 by mlebrun          ###   ########.fr       */
+/*   Updated: 2020/11/24 07:17:25 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
-
-void 	ft_display_null(t_format *format_parsed)
-{
-	char	null[7];
-	int		i;
-	
-	null[0] = '(';
-	null[1] = 'n';
-	null[2] = 'u';
-	null[3] = 'l';
-	null[4] = 'l';
-	null[5] = ')';
-	null[6] = '\0';
-	i = 0;
-	if (format_parsed->prec != -1)
-	{
-		while (null[i] != '\0' && i < format_parsed->prec)
-		{
-			ft_putchar(null[i], format_parsed);
-			i++;
-		}
-	}
-	else
-		ft_putstr(null, format_parsed);
-	
-}
 
 void	ft_display_char(t_format *format_parsed, va_list arg)
 {
@@ -92,6 +66,8 @@ void	ft_display_string(t_format *format_parsed, va_list arg)
 	str = va_arg(arg, char *);
 	if (format_parsed->prec == 0)
 		size = 0;
+	else if (!str && format_parsed->prec != -1 && format_parsed->prec < 6)
+		size = format_parsed->prec;
 	else if (!str)
 		size = 6;
 	else if (format_parsed->prec < ft_strlength(str) && format_parsed->prec != -1)
@@ -108,7 +84,13 @@ void	ft_display_string(t_format *format_parsed, va_list arg)
 				ft_putstr(str, format_parsed);	
 		}
 		else
-			ft_display_null(format_parsed);
+		{
+			if (format_parsed->prec != -1)
+				ft_putstr_prec("(null)", format_parsed);
+			else
+				ft_putstr("(null)", format_parsed);
+		}
+
 		i = 0;
 		while (i < format_parsed->width - size)
 		{
@@ -129,7 +111,12 @@ void	ft_display_string(t_format *format_parsed, va_list arg)
 				ft_putstr(str, format_parsed);
 		}
 		else
-			ft_display_null(format_parsed);
+		{
+			if (format_parsed->prec != -1)
+				ft_putstr_prec("(null)", format_parsed);
+			else
+				ft_putstr("(null)", format_parsed);
+		}
 	}
 }
 

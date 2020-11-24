@@ -6,7 +6,7 @@
 /*   By: Math <Math@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/09 11:30:34 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/11/22 16:35:36 by mlebrun          ###   ########.fr       */
+/*   Updated: 2020/11/24 07:39:17 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ t_format	*ft_init_format()
 		return (0);
 	elem->zero_flag = 0;
 	elem->minus_flag = 0;
+	elem->plus_flag = 0;
+	elem->space_flag = 0;
+	elem->hashtag_flag = 0;
 	elem->width = 0;
 	elem->type = '0';
 	elem->prec = -1;
