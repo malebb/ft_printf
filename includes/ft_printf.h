@@ -6,7 +6,7 @@
 /*   By: Math <Math@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/09 14:47:47 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/11/26 11:21:32 by mlebrun          ###   ########.fr       */
+/*   Updated: 2020/11/26 11:23:50 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,29 +77,29 @@ void		ft_putnbr_ull(unsigned long long int nb, t_format *format_parsed);
 int			ft_size_nb_ull(unsigned long long int nb);
 
 
-void	ft_putdigit(t_format *format_parsed, long double nb)
-void	ft_put_float(long double nb, int point, t_format *format_parsed)
-void	ft_putprefix(t_format *format_parsed, int neg)
-int		ft_zero_float(t_format *format_parsed, long double nb)
-void	ft_display_float(t_format *format_parsed, va_list arg)
+void	ft_putdigit(t_format *format_parsed, long double nb);
+void	ft_put_float(long double nb, int point, t_format *format_parsed);
+void	ft_putprefix(t_format *format_parsed, int neg);
+int		ft_zero_float(t_format *format_parsed, long double nb);
+void	ft_display_float(t_format *format_parsed, va_list arg);
 
 
-void	ft_putllint(unsigned long long int nb, t_format *format_parsed)
-int		ft_round_prec_0(unsigned long long int int_part, long double nb)
-int		ft_is_round(long double nb, t_format * format_parsed, int i, int pos)
-void	ft_display_width_float(t_format *format_parsed, int size_nb, int point, int neg)
-void	ft_display_zero_float(t_format *format_parsed, int size_nb, int point, int neg)
+void	ft_putllint(unsigned long long int nb, t_format *format_parsed);
+int		ft_round_prec_0(unsigned long long int int_part, long double nb);
+int		ft_is_round(long double nb, t_format * format_parsed, int i, int pos);
+void	ft_display_width_float(t_format *format_parsed, int size_nb, int point, int neg);
+void	ft_display_zero_float(t_format *format_parsed, int size_nb, int point, int neg);
 
-long double		ft_neg_float(t_format *format_parsed, long double nb, int *neg)
-int		ft_init_option(t_format *format_parsed)
-void	ft_putexp_or_float(long double nb, int point, t_format *format_parsed)
-int		ft_sign_float(t_format *format_parsed, long double *nb)
-void	ft_putfloat_no_minus(t_format *format_parsed, int neg, int size_nb, int point)
+long double		ft_neg_float(t_format *format_parsed, long double nb, int *neg);
+int		ft_init_option(t_format *format_parsed);
+void	ft_putexp_or_float(long double nb, int point, t_format *format_parsed);
+int		ft_sign_float(t_format *format_parsed, long double *nb);
+void	ft_putfloat_no_minus(t_format *format_parsed, int neg, int size_nb, int point);
 
-int		ft_find_exp(long double nb)
-void	ft_put_e_value(t_format *format_parsed, int exp)
-long double		ft_put_int_part(t_format *format_parsed, int point, int *exp, long double nb)
-long double		ft_put_int_part_minus_exp(t_format *format_parsed, int point, int *exp, long double nb)
-void	ft_putexp(long double nb, int point, t_format *format_parsed)
+int		ft_find_exp(long double nb);
+void	ft_put_e_value(t_format *format_parsed, int exp);
+long double		ft_put_int_part(t_format *format_parsed, int point, int *exp, long double nb);
+long double		ft_put_int_part_minus_exp(t_format *format_parsed, int point, int *exp, long double nb);
+void	ft_putexp(long double nb, int point, t_format *format_parsed);
 
 #endif
