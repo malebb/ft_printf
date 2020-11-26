@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   precision.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlebrun </var/mail/mlebrun>                +#+  +:+       +#+        */
+/*   By: mlebrun <mlebrun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/26 17:19:32 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/11/26 17:19:37 by mlebrun          ###   ########.fr       */
+/*   Created: 2020/11/26 17:59:02 by mlebrun           #+#    #+#             */
+/*   Updated: 2020/11/26 17:59:07 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,27 +54,7 @@ void	ft_prec_minus(t_format *format_parsed, t_nb *nb, int size_nb)
 	}
 	ft_putnbr_dec_or_hexa(format_parsed, nb, size_nb);
 	if (format_parsed->width != 0)
-	{
 		ft_print_space_prec(format_parsed, size_nb, nb);
-		/*
-		i = 0;
-		if (format_parsed->prec > size_nb)
-		{
-			while (i < format_parsed->width - (format_parsed->prec + format_parsed->negative + format_parsed->plus_flag + format_parsed->space_flag + format_parsed->hashtag_flag))
-			{
-				ft_putchar(' ', format_parsed);
-				i++;
-			}
-		}
-		else
-		{
-			while (i < format_parsed->width - (size_nb + format_parsed->negative + format_parsed->plus_flag + format_parsed->space_flag + format_parsed->hashtag_flag))
-			{
-				ft_putchar(' ', format_parsed);
-				i++;
-			}
-		}*/
-	}
 }
 
 void	ft_prec(t_format *format_parsed, t_nb *nb, int size_nb)

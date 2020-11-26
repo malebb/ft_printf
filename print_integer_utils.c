@@ -6,7 +6,7 @@
 /*   By: mlebrun <mlebrun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 16:26:31 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/11/26 16:34:02 by mlebrun          ###   ########.fr       */
+/*   Updated: 2020/11/26 18:02:36 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ long int	ft_check_minus_int(long long int nb, t_format *format_parsed)
 	return (nb);
 }
 
-void		ft_putnbr_dec_or_hexa(t_format *format_parsed, t_nb *nb, int size_nb)
+void		ft_putnbr_dec_or_hexa(t_format *format_parsed,
+			t_nb *nb, int size_nb)
 {
 	if (format_parsed->prec == 0 && size_nb == 0)
 		return ;

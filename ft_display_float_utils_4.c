@@ -6,14 +6,15 @@
 /*   By: mlebrun <mlebrun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 16:39:37 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/11/26 16:40:25 by mlebrun          ###   ########.fr       */
+/*   Updated: 2020/11/26 18:07:34 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_printf.h"
 
-long double		ft_put_integer_part(t_format *format_parsed, unsigned long long int int_part, long double nb, int *exp)
+long double		ft_put_integer_part(t_format *format_parsed,
+				unsigned long long int int_part, long double nb, int *exp)
 {
 	if (format_parsed->prec != 0)
 		nb = nb - int_part;
