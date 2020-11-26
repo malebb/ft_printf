@@ -6,7 +6,7 @@
 /*   By: Math <Math@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/09 11:30:34 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/11/24 13:27:59 by mlebrun          ###   ########.fr       */
+/*   Updated: 2020/11/25 15:58:35 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int			ft_parse_width(const char *format, int *i, va_list arg,
 	return (j);
 }
 
-int			ft_parse_precision(const char *format, int *i, va_list arg, t_format *data_format)
+int			ft_parse_precision(const char *format, int *i, va_list arg, t_format *format_parsed)
 {
 	int		j;
 	char	*size;
@@ -92,29 +92,59 @@ int			ft_parse_precision(const char *format, int *i, va_list arg, t_format *data
 		j++;
 		if (format[*i] == '*')
 		{
-			data_format->prec = va_arg(arg, int);
+			format_parsed->prec = va_arg(arg, int);
 			j++;
 			*i = *i + 1;
 		}
 		else
 		{
 			*i += ft_extract_nb(format, &size, *i, &j);
-			data_format->prec = ft_atoi(size);
+			format_parsed->prec = ft_atoi(size);
 		}
-		if (data_format->prec < 0)
-			data_format->prec = -1;
+		if (format_parsed->prec < 0)
+			format_parsed->prec = -1;
+	}
+	return (j);
+}
+
+int			ft_parse_size(const char *format, int *i, t_format *format_parsed)
+{
+	int		j;
+
+	j = 0;
+	if (format[*i] == 'l')
+	{
+		if (format[*i + 1] == 'l')
+		{
+			format_parsed->ll = 1;
+			*i = *i + 2;
+			j += 2;
+		}
+		else
+		{
+			format_parsed->l = 1;
+			*i = *i + 1;
+			j++;
+		}
+	}
+	else if (format[*i] == 'h')
+	{
+		format_parsed->h = 0;
+		*i = *i + 1;
+		j++;
 	}
 	return (j);
 }
 
 t_format	*ft_parse_format(const char *format, int i, int *j, va_list arg)
 {
-	t_format	*data_format;
+	t_format	*format_parsed;
 
-	data_format = ft_init_format();
-	ft_parse_flag(format, &i, j, data_format);
-	*j = *j + ft_parse_width(format, &i, arg, data_format);
-	*j = *j + ft_parse_precision(format, &i, arg, data_format);
-	data_format->type = format[i];
-	return (data_format);
+	format_parsed = ft_init_format();
+	ft_parse_flag(format, &i, j, format_parsed);
+	*j = *j + ft_parse_width(format, &i, arg, format_parsed);
+	*j = *j + ft_parse_precision(format, &i, arg, format_parsed);
+	*j = *j + ft_parse_size(format, &i, format_parsed);
+	format_parsed->type = format[i];
+	return (format_parsed);
 }

@@ -6,20 +6,31 @@
 /*   By: Math <Math@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/09 11:30:34 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/11/24 08:21:56 by mlebrun          ###   ########.fr       */
+/*   Updated: 2020/11/25 15:41:26 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
 
-void	ft_putnbr(long int nb, t_format *format_parsed)
+void	ft_putnbr(long long int nb, t_format *format_parsed)
 {
+	unsigned long long int		nbr;
+
 	if (nb < 0)
 	{
 		ft_putchar('-', format_parsed);
-		nb *= -1;
+		nbr = nb *= -1;
 	}
+	else
+		nbr = (unsigned long long int)nb;
+	if (nbr >= 10)
+		ft_putnbr(nbr / 10, format_parsed);
+	ft_putchar((nbr % 10) + '0', format_parsed);
+}
+
+void	ft_putnbr_ull(unsigned long long int nb, t_format *format_parsed)
+{
 	if (nb >= 10)
 		ft_putnbr(nb / 10, format_parsed);
 	ft_putchar((nb % 10) + '0', format_parsed);
@@ -43,7 +54,7 @@ void	ft_putstr(char *str, t_format *format_parsed)
 	}
 }
 
-void	ft_putnbr_hexa_lower(long int nb, t_format *format_parsed)
+void	ft_putnbr_hexa_lower(unsigned long long int nb, t_format *format_parsed)
 {
 	char	hexa[16];
 	int		i;
@@ -72,7 +83,7 @@ void	ft_putnbr_hexa_lower(long int nb, t_format *format_parsed)
 		ft_putchar(hexa[nb % 16], format_parsed);
 }
 
-void	ft_putnbr_hexa_upper(long int nb, t_format *format_parsed)
+void	ft_putnbr_hexa_upper(unsigned long long int nb, t_format *format_parsed)
 {
 	char	hexa[16];
 	int		i;

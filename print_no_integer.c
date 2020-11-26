@@ -6,7 +6,7 @@
 /*   By: Math <Math@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/09 11:30:34 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/11/24 07:17:25 by mlebrun          ###   ########.fr       */
+/*   Updated: 2020/11/25 16:28:15 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,5 +143,28 @@ void	ft_display_addr(t_format *format_parsed, va_list arg)
 			ft_putchar(' ', format_parsed);
 		ft_putstr("0x", format_parsed);
 		ft_putnbr_hexa_lower(addr, format_parsed);
+	}
+}
+
+void	ft_fill_number_read(va_list arg, int character_read, t_format *format_parsed)
+{
+	int			*i;
+	long		*li;
+	long long	*lli;
+
+	if (format_parsed->l)
+	{
+		li = va_arg(arg, long int *);
+		*li = character_read;
+	}
+	else if(format_parsed->ll)
+	{
+		lli = va_arg(arg, long long int *);
+		*lli = character_read;
+	}
+	else
+	{
+		i = va_arg(arg, int *);
+		*i = character_read;
 	}
 }
