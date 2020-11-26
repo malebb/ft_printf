@@ -6,7 +6,7 @@
 /*   By: mlebrun <mlebrun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 10:49:07 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/11/26 11:44:00 by mlebrun          ###   ########.fr       */
+/*   Updated: 2020/11/26 14:05:03 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,37 +57,6 @@ void			ft_put_e_value(t_format *format_parsed, int exp)
 		ft_putnbr(exp, format_parsed);
 }
 
-long double		ft_put_int_part(t_format *format_parsed, int point,
-				int *exp, long double nb)
-{
-	unsigned long long int		int_part;
-
-	int_part = (unsigned long long int)nb;
-	while (int_part > 10)
-	{
-		int_part /= 10;
-		nb /= 10;
-	}
-	if (format_parsed->prec != 0)
-		nb = nb - int_part;
-	if (ft_is_round(nb, format_parsed, 0, 0))
-	{
-		if (int_part + 1 == 10)
-		{
-			int_part = 0;
-			*exp = *exp + 1;
-		}
-		ft_putllint(int_part + 1, format_parsed);
-	}
-	else
-		ft_putllint(int_part, format_parsed);
-	if (format_parsed->prec == 0)
-		nb = nb - int_part;
-	if (point)
-		ft_putchar('.', format_parsed);
-	return (nb);
-}
-
 long double		ft_put_int_part_minus_exp(t_format *format_parsed, int point,
 				int *exp, long double nb)
 {
@@ -99,21 +68,24 @@ long double		ft_put_int_part_minus_exp(t_format *format_parsed, int point,
 		nb *= 10;
 		int_part = (unsigned long long int)nb;
 	}
-	if (format_parsed->prec != 0)
-		nb = nb - int_part;
-	if (ft_is_round(nb, format_parsed, 0, 0))
+	nb = ft_put_integer_part(format_parsed, int_part, nb, exp);
+	if (point)
+		ft_putchar('.', format_parsed);
+	return (nb);
+}
+
+long double		ft_put_int_part(t_format *format_parsed, int point,
+				int *exp, long double nb)
+{
+	unsigned long long int		int_part;
+
+	int_part = (unsigned long long int)nb;
+	while (int_part > 10)
 	{
-		if (int_part + 1 == 10)
-		{
-			int_part = 0;
-			*exp = *exp + 1;
-		}
-		ft_putllint(int_part + 1, format_parsed);
+		int_part /= 10;
+		nb /= 10;
 	}
-	else
-		ft_putllint(int_part, format_parsed);
-	if (format_parsed->prec == 0)
-		nb = nb - int_part;
+	nb = ft_put_integer_part(format_parsed, int_part, nb, exp);
 	if (point)
 		ft_putchar('.', format_parsed);
 	return (nb);

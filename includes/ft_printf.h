@@ -6,7 +6,7 @@
 /*   By: Math <Math@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/09 14:47:47 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/11/26 12:00:06 by mlebrun          ###   ########.fr       */
+/*   Updated: 2020/11/26 13:58:07 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,5 +123,7 @@ long double			ft_put_int_part_minus_exp(t_format *format_parsed,
 					int point, int *exp, long double nb);
 void				ft_putexp(long double nb, int point,
 					t_format *format_parsed);
+long double			ft_put_integer_part(t_format *format_parsed,
+					unsigned long long int int_part, long double nb, int *exp);
 
 #endif
