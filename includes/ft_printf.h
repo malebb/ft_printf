@@ -6,7 +6,7 @@
 /*   By: Math <Math@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/09 14:47:47 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/11/26 16:16:12 by mlebrun          ###   ########.fr       */
+/*   Updated: 2020/11/26 17:25:44 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,12 +125,13 @@ void				ft_putexp(long double nb, int point,
 					t_format *format_parsed);
 long double			ft_put_integer_part(t_format *format_parsed,
 					unsigned long long int int_part, long double nb, int *exp);
+void				ft_print_space_prec(t_format *format_parsed, int size_nb, t_nb *nb);
+void				ft_putprefix_nb(t_format *format_parsed);
+void				ft_putzero_x(t_format *format_parsed, t_nb *nb);
+void				ft_putnbr_zero_flag(t_format *format_parsed, t_nb *nb, int size_nb);
+t_nb				*ft_stocknb(va_list arg, t_format *format_parsed);
+void				ft_init_unsigned(t_format *format_parsed, t_nb *nb);
+void				ft_init_signed(t_format *format_parsed, t_nb *nb);
+t_nb				*ft_init_nb(void);
 
-void	ft_print_space_prec(t_format *format_parsed, int size_nb, t_nb *nb)
-void	ft_putprefix_nb(t_format *format_parsed)
-void	ft_putzero_x(t_format *format_parsed, t_nb *nb)
-void	ft_putnbr_zero_flag(t_format *format_parsed, t_nb *nb, int size_nb)
-t_nb	*ft_stocknb(va_list arg, t_format *format_parsed)
-void	ft_init_unsigned(t_format *format_parsed, t_nb *nb)
-void	ft_init_signed(t_format *format_parsed, t_nb *nb)
 #endif

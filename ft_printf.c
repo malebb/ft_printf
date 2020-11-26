@@ -6,7 +6,7 @@
 /*   By: Math <Math@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/09 11:30:34 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/11/26 16:41:57 by mlebrun          ###   ########.fr       */
+/*   Updated: 2020/11/26 17:10:05 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,16 @@ void		ft_display_by_type(t_format *format_parsed, va_list arg)
 		ft_display_float(format_parsed, arg);
 }
 
+t_format	*ft_parse_and_print(int *i, const char *format, int *j, va_list arg)
+{
+	t_format		*format_parsed;
+	*i = *i + 1;
+	format_parsed = ft_parse_format(format, *i, j, arg);
+	ft_display_by_type(format_parsed, arg);
+	*i += *j;
+	return (format_parsed);
+}
+
 int			ft_printf(const char *format, ...)
 {
 	va_list		arg;
@@ -69,10 +79,13 @@ int			ft_printf(const char *format, ...)
 		j = 0;
 		if (format[i] == '%')
 		{
+			format_parsed = ft_parse_and_print(&i, format, &j, arg);
+			/*
 			i++;
 			format_parsed = ft_parse_format(format, i, &j, arg);
 			ft_display_by_type(format_parsed, arg);
 			i += j;
+			*/
 			if (format_parsed->type == 'n')
 				ft_fill_number_read(arg, character_read, format_parsed);
 		}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   precision.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Math <Math@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mlebrun </var/mail/mlebrun>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/09 11:30:34 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/11/26 16:44:27 by mlebrun          ###   ########.fr       */
+/*   Created: 2020/11/26 17:19:32 by mlebrun           #+#    #+#             */
+/*   Updated: 2020/11/26 17:19:37 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,8 @@ void	ft_prec(t_format *format_parsed, t_nb *nb, int size_nb)
 		ft_print_space_prec(format_parsed, size_nb, nb);
 	else
 		nb->ll = ft_check_minus_int(nb->ll, format_parsed);
-	ft_putprefix_nb(format_parsed, nb);
-	ft_putzero_x(format_parsed);
+	ft_putprefix_nb(format_parsed);
+	ft_putzero_x(format_parsed, nb);
 	i = -1;
 	while (++i < format_parsed->prec - size_nb)
 	{
