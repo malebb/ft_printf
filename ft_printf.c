@@ -6,14 +6,14 @@
 /*   By: Math <Math@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/09 11:30:34 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/11/26 08:32:45 by mlebrun          ###   ########.fr       */
+/*   Updated: 2020/11/26 16:41:57 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
 
-t_format	*ft_init_format()
+t_format	*ft_init_format(void)
 {
 	t_format	*elem;
 

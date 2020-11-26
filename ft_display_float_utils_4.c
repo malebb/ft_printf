@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_display_float_utils_4.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlebrun </var/mail/mlebrun>                +#+  +:+       +#+        */
+/*   By: mlebrun <mlebrun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/26 13:26:35 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/11/26 14:01:11 by mlebrun          ###   ########.fr       */
+/*   Created: 2020/11/26 16:39:37 by mlebrun           #+#    #+#             */
+/*   Updated: 2020/11/26 16:40:25 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 long double		ft_put_integer_part(t_format *format_parsed, unsigned long long int int_part, long double nb, int *exp)
 {
-
 	if (format_parsed->prec != 0)
 		nb = nb - int_part;
 	if (ft_is_round(nb, format_parsed, 0, 0))
@@ -34,7 +33,7 @@ long double		ft_put_integer_part(t_format *format_parsed, unsigned long long int
 	return (nb);
 }
 
-int		ft_size_llnb(unsigned long long int nb)
+int				ft_size_llnb(unsigned long long int nb)
 {
 	int			size;
 

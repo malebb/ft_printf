@@ -6,7 +6,7 @@
 /*   By: Math <Math@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/09 11:30:34 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/11/26 16:09:56 by mlebrun          ###   ########.fr       */
+/*   Updated: 2020/11/26 16:44:27 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ void	ft_print_space_prec(t_format *format_parsed, int size_nb, t_nb *nb)
 	i = 0;
 	if (format_parsed->prec > size_nb)
 	{
-		while (i < format_parsed->width - (format_parsed->prec + format_parsed->negative + format_parsed->plus_flag + format_parsed->space_flag + format_parsed->hashtag_flag))
+		while (i < format_parsed->width - (format_parsed->prec +
+		format_parsed->negative + format_parsed->plus_flag +
+		format_parsed->space_flag + format_parsed->hashtag_flag))
 		{
 			ft_putchar(' ', format_parsed);
 			i++;
@@ -28,7 +30,9 @@ void	ft_print_space_prec(t_format *format_parsed, int size_nb, t_nb *nb)
 	}
 	else
 	{
-		while (i < format_parsed->width - (size_nb + format_parsed->negative + format_parsed->plus_flag + format_parsed->space_flag + format_parsed->hashtag_flag))
+		while (i < format_parsed->width - (size_nb + format_parsed->negative +
+		format_parsed->plus_flag + format_parsed->space_flag +
+		format_parsed->hashtag_flag))
 		{
 			ft_putchar(' ', format_parsed);
 			i++;
@@ -40,7 +44,7 @@ void	ft_print_space_prec(t_format *format_parsed, int size_nb, t_nb *nb)
 void	ft_prec_minus(t_format *format_parsed, t_nb *nb, int size_nb)
 {
 	int				i;
-	
+
 	i = 0;
 	nb->ll = ft_check_minus_int(nb->ll, format_parsed);
 	while (i < format_parsed->prec - size_nb)

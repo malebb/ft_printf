@@ -6,28 +6,12 @@
 /*   By: Math <Math@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/09 11:30:34 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/11/25 15:41:26 by mlebrun          ###   ########.fr       */
+/*   Updated: 2020/11/26 16:36:42 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
-
-void	ft_putnbr(long long int nb, t_format *format_parsed)
-{
-	unsigned long long int		nbr;
-
-	if (nb < 0)
-	{
-		ft_putchar('-', format_parsed);
-		nbr = nb *= -1;
-	}
-	else
-		nbr = (unsigned long long int)nb;
-	if (nbr >= 10)
-		ft_putnbr(nbr / 10, format_parsed);
-	ft_putchar((nbr % 10) + '0', format_parsed);
-}
 
 void	ft_putnbr_ull(unsigned long long int nb, t_format *format_parsed)
 {

@@ -6,7 +6,7 @@
 /*   By: mlebrun <mlebrun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 06:33:32 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/11/26 10:53:44 by mlebrun          ###   ########.fr       */
+/*   Updated: 2020/11/26 16:35:34 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 void	ft_putdigit(t_format *format_parsed, long double nb)
 {
-
 	int							i;
 	int							pos;
 	unsigned long long int		int_part;
@@ -58,8 +57,6 @@ void	ft_put_float(long double nb, int point, t_format *format_parsed)
 		ft_putchar('.', format_parsed);
 	ft_putdigit(format_parsed, nb);
 }
-
-
 
 void	ft_putprefix(t_format *format_parsed, int neg)
 {
