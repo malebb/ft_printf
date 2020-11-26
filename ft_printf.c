@@ -6,7 +6,7 @@
 /*   By: Math <Math@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/09 11:30:34 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/11/26 18:09:19 by mlebrun          ###   ########.fr       */
+/*   Updated: 2020/11/26 18:34:32 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,12 @@ t_format	*ft_parse_and_print(int *i, const char *format,
 	return (format_parsed);
 }
 
+void		ft_n_flag(t_format *format_parsed, va_list arg, int character_read)
+{
+	if (format_parsed->type == 'n')
+		ft_fill_number_read(arg, character_read, format_parsed);
+}
+
 int			ft_printf(const char *format, ...)
 {
 	va_list		arg;
@@ -73,21 +79,19 @@ int			ft_printf(const char *format, ...)
 	int			character_read;
 
 	va_start(arg, format);
-	i = 0;
+	i = -1;
 	character_read = 0;
 	format_parsed = ft_init_format();
-	while (format[i] != '\0')
+	while (format[++i] != '\0')
 	{
 		j = 0;
 		if (format[i] == '%')
 		{
 			format_parsed = ft_parse_and_print(&i, format, &j, arg);
-			if (format_parsed->type == 'n')
-				ft_fill_number_read(arg, character_read, format_parsed);
+			ft_n_flag(format_parsed, arg, character_read);
 		}
 		else
 			ft_putchar(format[i], format_parsed);
-		i++;
 		character_read += format_parsed->c_read;
 		format_parsed->c_read = 0;
 	}
