@@ -6,7 +6,7 @@
 /*   By: Math <Math@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/09 11:30:34 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/11/25 15:58:35 by mlebrun          ###   ########.fr       */
+/*   Updated: 2020/11/26 13:16:55 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,12 @@ int			ft_extract_nb(const char *format, char **size, int i, int *j)
 void		ft_parse_flag(const char *format, int *i, int *j,
 			t_format *data_format)
 {
-	while (format[*i] == '0' || format[*i] == '-' || format[*i] == '+' || format[*i] == ' ' || format[*i] == '#')
+	while (format[*i] == '0' || format[*i] == '-'
+	|| format[*i] == '+' || format[*i] == ' ' || format[*i] == '#')
 	{
 		if (format[*i] == '0')
 			data_format->zero_flag = 1;
-		else if(format[*i] == '-')
+		else if (format[*i] == '-')
 			data_format->minus_flag = 1;
 		else if (format[*i] == '+')
 			data_format->plus_flag = 1;
@@ -50,7 +51,7 @@ void		ft_parse_flag(const char *format, int *i, int *j,
 		else if (format[*i] == '#')
 			data_format->hashtag_flag = 2;
 		*j = *j + 1;
-		*i = *i + 1;	
+		*i = *i + 1;
 	}
 }
 
@@ -80,7 +81,8 @@ int			ft_parse_width(const char *format, int *i, va_list arg,
 	return (j);
 }
 
-int			ft_parse_precision(const char *format, int *i, va_list arg, t_format *format_parsed)
+int			ft_parse_precision(const char *format, int *i, va_list arg,
+			t_format *format_parsed)
 {
 	int		j;
 	char	*size;

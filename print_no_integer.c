@@ -6,7 +6,7 @@
 /*   By: Math <Math@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/09 11:30:34 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/11/25 16:28:15 by mlebrun          ###   ########.fr       */
+/*   Updated: 2020/11/26 13:20:40 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	ft_display_char(t_format *format_parsed, va_list arg)
 		c = va_arg(arg, int);
 	else
 		c = '%';
-	
 	if (format_parsed->minus_flag == 1)
 	{
 		ft_putchar(c, format_parsed);
@@ -70,7 +69,8 @@ void	ft_display_string(t_format *format_parsed, va_list arg)
 		size = format_parsed->prec;
 	else if (!str)
 		size = 6;
-	else if (format_parsed->prec < ft_strlength(str) && format_parsed->prec != -1)
+	else if (format_parsed->prec < ft_strlength(str) &&
+	format_parsed->prec != -1)
 		size = format_parsed->prec;
 	else
 		size = ft_strlength(str);
@@ -81,7 +81,7 @@ void	ft_display_string(t_format *format_parsed, va_list arg)
 			if (format_parsed->prec != -1)
 				ft_putstr_prec(str, format_parsed);
 			else
-				ft_putstr(str, format_parsed);	
+				ft_putstr(str, format_parsed);
 		}
 		else
 		{
@@ -90,7 +90,6 @@ void	ft_display_string(t_format *format_parsed, va_list arg)
 			else
 				ft_putstr("(null)", format_parsed);
 		}
-
 		i = 0;
 		while (i < format_parsed->width - size)
 		{
@@ -105,8 +104,8 @@ void	ft_display_string(t_format *format_parsed, va_list arg)
 			ft_putchar(' ', format_parsed);
 		if (str)
 		{
-			if (format_parsed->prec != -1){
-				ft_putstr_prec(str, format_parsed);}
+			if (format_parsed->prec != -1)
+				ft_putstr_prec(str, format_parsed);
 			else
 				ft_putstr(str, format_parsed);
 		}
@@ -146,7 +145,8 @@ void	ft_display_addr(t_format *format_parsed, va_list arg)
 	}
 }
 
-void	ft_fill_number_read(va_list arg, int character_read, t_format *format_parsed)
+void	ft_fill_number_read(va_list arg, int character_read,
+		t_format *format_parsed)
 {
 	int			*i;
 	long		*li;
@@ -157,7 +157,7 @@ void	ft_fill_number_read(va_list arg, int character_read, t_format *format_parse
 		li = va_arg(arg, long int *);
 		*li = character_read;
 	}
-	else if(format_parsed->ll)
+	else if (format_parsed->ll)
 	{
 		lli = va_arg(arg, long long int *);
 		*lli = character_read;

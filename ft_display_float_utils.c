@@ -6,7 +6,7 @@
 /*   By: mlebrun <mlebrun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 10:40:48 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/11/26 11:10:38 by mlebrun          ###   ########.fr       */
+/*   Updated: 2020/11/26 11:32:53 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		ft_round_prec_0(unsigned long long int int_part, long double nb)
 	return (0);
 }
 
-int		ft_is_round(long double nb, t_format * format_parsed, int i, int pos)
+int		ft_is_round(long double nb, t_format *format_parsed, int i, int pos)
 {
 	int					int_part;
 
@@ -58,18 +58,23 @@ int		ft_is_round(long double nb, t_format * format_parsed, int i, int pos)
 			return (0);
 	}
 	else
-		return(0);
+		return (0);
 	return (1);
 }
 
-void	ft_display_width_float(t_format *format_parsed, int size_nb, int point, int neg)
+void	ft_display_width_float(t_format *format_parsed, int size_nb,
+		int point, int neg)
 {
 	int		i;
 
 	i = 0;
-	if (format_parsed->width > format_parsed->prec + point + size_nb + neg + format_parsed->plus_flag + format_parsed->space_flag + format_parsed->exp)
+	if (format_parsed->width > format_parsed->prec + point + size_nb +
+	neg + format_parsed->plus_flag +
+	format_parsed->space_flag + format_parsed->exp)
 	{
-		while (i < format_parsed->width - (format_parsed->prec + point + size_nb + neg + format_parsed->plus_flag + format_parsed->space_flag + format_parsed->exp))
+		while (i < format_parsed->width - (format_parsed->prec + point +
+		size_nb + neg + format_parsed->plus_flag + format_parsed->space_flag
+		+ format_parsed->exp))
 		{
 			ft_putchar(' ', format_parsed);
 			i++;
@@ -77,14 +82,19 @@ void	ft_display_width_float(t_format *format_parsed, int size_nb, int point, int
 	}
 }
 
-void	ft_display_zero_float(t_format *format_parsed, int size_nb, int point, int neg)
+void	ft_display_zero_float(t_format *format_parsed, int size_nb,
+		int point, int neg)
 {
 	int		i;
 
 	i = 0;
-	if (format_parsed->width > format_parsed->prec + point + size_nb + neg + format_parsed->plus_flag + format_parsed->space_flag + format_parsed->exp)
+	if (format_parsed->width > format_parsed->prec + point + size_nb + neg
+	+ format_parsed->plus_flag + format_parsed->space_flag +
+	format_parsed->exp)
 	{
-		while (i < format_parsed->width - (format_parsed->prec + point + size_nb + neg + format_parsed->plus_flag + format_parsed->space_flag + format_parsed->exp))
+		while (i < format_parsed->width - (format_parsed->prec + point +
+		size_nb + neg + format_parsed->plus_flag + format_parsed->space_flag +
+		format_parsed->exp))
 		{
 			ft_putchar('0', format_parsed);
 			i++;

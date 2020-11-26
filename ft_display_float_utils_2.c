@@ -6,7 +6,7 @@
 /*   By: mlebrun <mlebrun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 10:44:52 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/11/26 10:56:39 by mlebrun          ###   ########.fr       */
+/*   Updated: 2020/11/26 12:01:52 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ long double		ft_neg_float(t_format *format_parsed, long double nb, int *neg)
 	return (nb);
 }
 
-int		ft_init_option(t_format *format_parsed)
+int				ft_init_option(t_format *format_parsed)
 {
 	int		point;
 
@@ -44,16 +44,16 @@ int		ft_init_option(t_format *format_parsed)
 	return (point);
 }
 
-void	ft_putexp_or_float(long double nb, int point, t_format *format_parsed)
+void			ft_putexp_or_float(long double nb, int point,
+				t_format *format_parsed)
 {
-
 	if (format_parsed->type == 'e')
 		ft_putexp(nb, point, format_parsed);
 	else
 		ft_put_float(nb, point, format_parsed);
 }
 
-int		ft_sign_float(t_format *format_parsed, long double *nb)
+int				ft_sign_float(t_format *format_parsed, long double *nb)
 {
 	int		neg;
 
@@ -64,8 +64,8 @@ int		ft_sign_float(t_format *format_parsed, long double *nb)
 	return (neg);
 }
 
-
-void	ft_putfloat_no_minus(t_format *format_parsed, int neg, int size_nb, int point)
+void			ft_putfloat_no_minus(t_format *format_parsed, int neg,
+		int size_nb, int point)
 {
 	if (format_parsed->zero_flag != 0)
 	{

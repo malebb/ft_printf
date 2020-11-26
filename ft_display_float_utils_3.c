@@ -6,14 +6,14 @@
 /*   By: mlebrun <mlebrun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 10:49:07 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/11/26 10:56:48 by mlebrun          ###   ########.fr       */
+/*   Updated: 2020/11/26 11:44:00 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
 
-int		ft_find_exp(long double nb)
+int				ft_find_exp(long double nb)
 {
 	int							exp;
 	unsigned long long int		int_part;
@@ -42,7 +42,7 @@ int		ft_find_exp(long double nb)
 	return (exp);
 }
 
-void	ft_put_e_value(t_format *format_parsed, int exp)
+void			ft_put_e_value(t_format *format_parsed, int exp)
 {
 	ft_putchar('e', format_parsed);
 	if (exp >= 0)
@@ -57,14 +57,15 @@ void	ft_put_e_value(t_format *format_parsed, int exp)
 		ft_putnbr(exp, format_parsed);
 }
 
-long double		ft_put_int_part(t_format *format_parsed, int point, int *exp, long double nb)
+long double		ft_put_int_part(t_format *format_parsed, int point,
+				int *exp, long double nb)
 {
 	unsigned long long int		int_part;
 
 	int_part = (unsigned long long int)nb;
 	while (int_part > 10)
 	{
-		int_part /= 10;	
+		int_part /= 10;
 		nb /= 10;
 	}
 	if (format_parsed->prec != 0)
@@ -87,7 +88,8 @@ long double		ft_put_int_part(t_format *format_parsed, int point, int *exp, long 
 	return (nb);
 }
 
-long double		ft_put_int_part_minus_exp(t_format *format_parsed, int point, int *exp, long double nb)
+long double		ft_put_int_part_minus_exp(t_format *format_parsed, int point,
+				int *exp, long double nb)
 {
 	unsigned long long int		int_part;
 
@@ -117,7 +119,7 @@ long double		ft_put_int_part_minus_exp(t_format *format_parsed, int point, int *
 	return (nb);
 }
 
-void	ft_putexp(long double nb, int point, t_format *format_parsed)
+void			ft_putexp(long double nb, int point, t_format *format_parsed)
 {
 	unsigned long long int		int_part;
 	int							exp;
@@ -129,7 +131,7 @@ void	ft_putexp(long double nb, int point, t_format *format_parsed)
 		ft_putnbr(0, format_parsed);
 		if (point)
 			ft_putchar('.', format_parsed);
-	}	
+	}
 	else if (int_part > 0)
 		nb = ft_put_int_part(format_parsed, point, &exp, nb);
 	else
