@@ -6,7 +6,7 @@
 /*   By: Math <Math@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/09 14:47:47 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/11/27 08:35:28 by mlebrun          ###   ########.fr       */
+/*   Updated: 2020/11/27 10:59:50 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,5 +137,7 @@ void				ft_init_signed(t_format *format_parsed, t_nb *nb);
 t_nb				*ft_init_nb(void);
 void				ft_display_addr_minus_flag(t_format *format_parsed,
 					long int addr, int size);
+void				ft_putaddr_width(int size, t_format *format_parsed);
+void				ft_display_prec_and_zero(t_format *format_parsed, int size);
 
 #endif

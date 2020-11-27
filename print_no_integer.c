@@ -6,7 +6,7 @@
 /*   By: mlebrun <mlebrun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/27 08:02:31 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/11/27 08:34:37 by mlebrun          ###   ########.fr       */
+/*   Updated: 2020/11/27 10:54:48 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,16 +60,18 @@ void	ft_display_string(t_format *format_parsed, va_list arg)
 	if (format_parsed->minus_flag == 1)
 	{
 		ft_putstr_and_null(str, format_parsed);
-		i = 0;
-		while (i < format_parsed->width - size)
-		{
+		i = -1;
+		while (++i < format_parsed->width - size)
 			ft_putchar(' ', format_parsed);
-			i++;
-		}
 	}
 	else
 	{
 		i = -1;
+		if (format_parsed->zero_flag == 1)
+		{
+			while (++i < format_parsed->width - size)
+				ft_putchar('0', format_parsed);
+		}
 		while (++i < format_parsed->width - size)
 			ft_putchar(' ', format_parsed);
 		ft_putstr_and_null(str, format_parsed);
@@ -84,16 +86,18 @@ void	ft_display_addr(t_format *format_parsed, va_list arg)
 
 	addr = (long int)va_arg(arg, long int);
 	size = ft_size_hexa(addr);
-	if (format_parsed->prec == 0 && !addr)
+	if ((format_parsed->prec == 0 && !addr))
 		size = 0;
 	if (format_parsed->minus_flag == 1)
 		ft_display_addr_minus_flag(format_parsed, addr, size);
 	else
 	{
 		i = -1;
-		while (++i < format_parsed->width - (size + 2))
-			ft_putchar(' ', format_parsed);
+		if (format_parsed->zero_flag == 0 || (format_parsed->zero_flag == 1 &&
+		format_parsed->prec != -1))
+			ft_putaddr_width(size, format_parsed);
 		ft_putstr("0x", format_parsed);
+		ft_display_prec_and_zero(format_parsed, size);
 		if (!(format_parsed->prec == 0 && !addr))
 			ft_putnbr_hexa_lower(addr, format_parsed);
 	}
