@@ -6,7 +6,7 @@
 /*   By: mlebrun <mlebrun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/27 08:02:31 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/11/27 08:02:40 by mlebrun          ###   ########.fr       */
+/*   Updated: 2020/11/27 08:34:37 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,24 +84,17 @@ void	ft_display_addr(t_format *format_parsed, va_list arg)
 
 	addr = (long int)va_arg(arg, long int);
 	size = ft_size_hexa(addr);
-	if (format_parsed->prec == 0)
+	if (format_parsed->prec == 0 && !addr)
 		size = 0;
 	if (format_parsed->minus_flag == 1)
-	{
-		ft_putstr("0x", format_parsed);
-		if (format_parsed->prec != 0)
-			ft_putnbr_hexa_lower(addr, format_parsed);
-		i = -1;
-		while (++i < format_parsed->width - (size + 2))
-			ft_putchar(' ', format_parsed);
-	}
+		ft_display_addr_minus_flag(format_parsed, addr, size);
 	else
 	{
 		i = -1;
 		while (++i < format_parsed->width - (size + 2))
 			ft_putchar(' ', format_parsed);
 		ft_putstr("0x", format_parsed);
-		if (format_parsed->prec != 0)
+		if (!(format_parsed->prec == 0 && !addr))
 			ft_putnbr_hexa_lower(addr, format_parsed);
 	}
 }

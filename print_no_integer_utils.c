@@ -6,7 +6,7 @@
 /*   By: mlebrun <mlebrun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 18:02:59 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/11/27 08:02:54 by mlebrun          ###   ########.fr       */
+/*   Updated: 2020/11/27 08:35:42 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,20 @@ void	ft_display_char(t_format *format_parsed, va_list arg)
 	}
 	else
 		ft_putchar_and_modulo(format_parsed, c);
+}
+
+void	ft_display_addr_minus_flag(t_format *format_parsed, long int addr,
+		int size)
+{
+	int		i;
+
+	ft_putstr("0x", format_parsed);
+	if (!(format_parsed->prec == 0 && !addr))
+		ft_putnbr_hexa_lower(addr, format_parsed);
+	i = 0;
+	while (i < format_parsed->width - (size + 2))
+	{
+		ft_putchar(' ', format_parsed);
+		i++;
+	}
 }
