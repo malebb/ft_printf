@@ -6,12 +6,12 @@
 /*   By: mlebrun <mlebrun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/27 08:00:49 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/11/27 08:00:59 by mlebrun          ###   ########.fr       */
+/*   Updated: 2020/11/27 11:29:55 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft/libft.h"
+#include "libft.h"
 
 void		ft_parse_flag(const char *format, int *i, int *j,
 			t_format *data_format)

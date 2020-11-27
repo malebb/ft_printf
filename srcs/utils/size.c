@@ -6,12 +6,12 @@
 /*   By: mlebrun <mlebrun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/27 08:03:10 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/11/27 08:03:16 by mlebrun          ###   ########.fr       */
+/*   Updated: 2020/11/27 11:31:08 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft/libft.h"
+#include "libft.h"
 
 int		ft_size_hexa(unsigned long long int nb)
 {

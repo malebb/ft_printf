@@ -6,11 +6,11 @@
 /*   By: mlebrun <mlebrun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 18:02:59 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/11/27 10:53:11 by mlebrun          ###   ########.fr       */
+/*   Updated: 2020/11/27 11:29:43 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "libft.h"
 #include "ft_printf.h"
 
 void	ft_putchar_and_modulo(t_format *format_parsed, char c)

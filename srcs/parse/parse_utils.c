@@ -6,11 +6,11 @@
 /*   By: mlebrun <mlebrun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 17:59:56 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/11/27 08:01:15 by mlebrun          ###   ########.fr       */
+/*   Updated: 2020/11/27 11:30:04 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "libft.h"
 #include "ft_printf.h"
 
 int			ft_extract_nb(const char *format, char **size, int i, int *j)

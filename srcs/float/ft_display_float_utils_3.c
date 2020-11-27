@@ -6,12 +6,12 @@
 /*   By: mlebrun <mlebrun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 10:49:07 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/11/27 07:59:30 by mlebrun          ###   ########.fr       */
+/*   Updated: 2020/11/27 11:28:23 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft/libft.h"
+#include "libft.h"
 
 int				ft_find_exp(long double nb)
 {

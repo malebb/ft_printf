@@ -6,11 +6,11 @@
 /*   By: mlebrun <mlebrun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/27 07:52:54 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/11/27 08:00:27 by mlebrun          ###   ########.fr       */
+/*   Updated: 2020/11/27 11:30:50 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "libft.h"
 #include "ft_printf.h"
 
 t_format	*ft_init_format(void)

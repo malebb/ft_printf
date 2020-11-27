@@ -6,12 +6,12 @@
 /*   By: mlebrun <mlebrun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/27 08:00:04 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/11/27 08:44:45 by mlebrun          ###   ########.fr       */
+/*   Updated: 2020/11/27 11:27:13 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft/libft.h"
+#include "libft.h"
 
 t_format	*ft_parse_and_print(int *i, const char *format,
 			int *j, va_list arg)
