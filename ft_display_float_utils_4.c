@@ -6,11 +6,11 @@
 /*   By: mlebrun <mlebrun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 16:39:37 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/11/26 18:07:34 by mlebrun          ###   ########.fr       */
+/*   Updated: 2020/11/27 07:59:55 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libft/libft.h"
 #include "ft_printf.h"
 
 long double		ft_put_integer_part(t_format *format_parsed,
@@ -28,7 +28,14 @@ long double		ft_put_integer_part(t_format *format_parsed,
 		ft_putllint(int_part + 1, format_parsed);
 	}
 	else
+	{
+		if (int_part == 10)
+		{
+			int_part = 1;
+			nb /= 10;
+		}
 		ft_putllint(int_part, format_parsed);
+	}
 	if (format_parsed->prec == 0)
 		nb = nb - int_part;
 	return (nb);

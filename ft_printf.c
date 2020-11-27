@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Math <Math@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mlebrun <mlebrun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/09 11:30:34 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/11/26 18:34:32 by mlebrun          ###   ########.fr       */
+/*   Created: 2020/11/27 08:00:04 by mlebrun           #+#    #+#             */
+/*   Updated: 2020/11/27 08:00:15 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
+#include "libft/libft.h"
 
 t_format	*ft_init_format(void)
 {
@@ -64,10 +64,25 @@ t_format	*ft_parse_and_print(int *i, const char *format,
 	return (format_parsed);
 }
 
-void		ft_n_flag(t_format *format_parsed, va_list arg, int character_read)
+void		ft_count_char(int *character_read, t_format *format_parsed)
+{
+	*character_read = *character_read + format_parsed->c_read;
+	format_parsed->c_read = 0;
+}
+
+int			ft_valid_and_n_flag(t_format *format_parsed, va_list arg,
+			int character_read)
 {
 	if (format_parsed->type == 'n')
 		ft_fill_number_read(arg, character_read, format_parsed);
+	if (format_parsed->type != 'n' && format_parsed->type != 'd' &&
+		format_parsed->type != 'u' && format_parsed->type != 'f' &&
+		format_parsed->type != 's' && format_parsed->type != 'x' &&
+		format_parsed->type != 'X' && format_parsed->type != 'c' &&
+		format_parsed->type != 'p' && format_parsed->type != 'e' &&
+		format_parsed->type != '%' && format_parsed->type != 'i')
+			return (0);
+	return (1);
 }
 
 int			ft_printf(const char *format, ...)
@@ -88,12 +103,12 @@ int			ft_printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			format_parsed = ft_parse_and_print(&i, format, &j, arg);
-			ft_n_flag(format_parsed, arg, character_read);
+			if (!ft_valid_and_n_flag(format_parsed, arg, character_read))
+				break ;
 		}
 		else
 			ft_putchar(format[i], format_parsed);
-		character_read += format_parsed->c_read;
-		format_parsed->c_read = 0;
+		ft_count_char(&character_read, format_parsed);
 	}
 	va_end(arg);
 	return (character_read);

@@ -6,11 +6,11 @@
 /*   By: mlebrun <mlebrun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 16:29:49 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/11/26 18:05:24 by mlebrun          ###   ########.fr       */
+/*   Updated: 2020/11/27 08:02:14 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libft/libft.h"
 #include "ft_printf.h"
 
 void	ft_putnbr_zero_flag(t_format *format_parsed, t_nb *nb, int size_nb)

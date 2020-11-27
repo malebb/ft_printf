@@ -6,12 +6,12 @@
 /*   By: mlebrun <mlebrun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 17:59:02 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/11/26 17:59:07 by mlebrun          ###   ########.fr       */
+/*   Updated: 2020/11/27 08:01:28 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
+#include "libft/libft.h"
 
 void	ft_print_space_prec(t_format *format_parsed, int size_nb, t_nb *nb)
 {

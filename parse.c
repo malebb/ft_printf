@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Math <Math@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mlebrun <mlebrun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/09 11:30:34 by mlebrun           #+#    #+#             */
-/*   Updated: 2020/11/26 18:01:06 by mlebrun          ###   ########.fr       */
+/*   Created: 2020/11/27 08:00:49 by mlebrun           #+#    #+#             */
+/*   Updated: 2020/11/27 08:00:59 by mlebrun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
+#include "libft/libft.h"
 
 void		ft_parse_flag(const char *format, int *i, int *j,
 			t_format *data_format)
